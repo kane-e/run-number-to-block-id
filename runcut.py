@@ -46,7 +46,6 @@ def make_new_file(filepath, blockid_map, field_names=["run_number"]):
         for row in csvfile:
             row_copy = row.copy()
             for field_name in field_names:
-                print(row[field_name])
                 if row[field_name] not in blockid_map:
                     print(COLOR_BLUE + "Invalid field name " + field_name + " for file " + file_name + ", skipping this file" + COLOR_RESET)
                     return
