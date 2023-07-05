@@ -8,14 +8,15 @@ COLOR_GREEN = "\033[0;32m"
 COLOR_RESET = "\033[0;0m"
 
 def convert_run_num():
-    filepath = sys.argv[1]
     if len(sys.argv) < 2:
-        print(COLOR_RED + "No filename provided!" + COLOR_RESET)
+        print(COLOR_RED + "No file provided!" + COLOR_RESET)
         exit()
+    filepath = sys.argv[1]
     if not os.path.isfile(filepath):
-        print(COLOR_RED + "File does not exist!" + COLOR_RESET)
+        print(COLOR_RED + "Input is not a file! Please input runcut.txt." + COLOR_RESET)
+        exit()
     if not os.path.basename(filepath) == "runcut.txt":
-        print(COLOR_RED + "Incorrect file input! Please input runcut.txt" + COLOR_RESET)
+        print(COLOR_RED + "Incorrect file input! Please input runcut.txt." + COLOR_RESET)
         exit()
     make_new_file(filepath)        
     
