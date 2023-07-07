@@ -29,7 +29,7 @@ def make_new_file(filepath):
             if "block_id" not in row or not row["block_id"]:
                 print(COLOR_RED + "Missing block_id values. The operation cannot be performed." + COLOR_RESET)
                 return
-        file_name = "runcut2.txt"
+        file_name = "runcut_syncro.txt"
         if os.path.exists(file_name):
             print(COLOR_RED + "File with name " + file_name + " already exists in directory; cannot create a new one. Move this file and try again." + COLOR_RESET)
             return
