@@ -15,9 +15,6 @@ def convert_run_num():
     if not os.path.isfile(filepath):
         print(COLOR_RED + "Input is not a file! Please input runcut.txt." + COLOR_RESET)
         exit()
-    if not os.path.basename(filepath) == "runcut.txt":
-        print(COLOR_RED + "Incorrect file input! Please input runcut.txt." + COLOR_RESET)
-        exit()
     make_new_file(filepath)        
     
 def make_new_file(filepath):
@@ -25,9 +22,12 @@ def make_new_file(filepath):
         runcut_txt = io.TextIOWrapper(file_raw)
         csv_file = csv.DictReader(runcut_txt)
         csv_list = list(csv_file)
+        if "block_id" not in csv_file.fieldnames:
+            print(COLOR_RED + "No block_id column detected. The operation cannot be performed." + COLOR_RESET)
+            return
         for row in csv_list:
-            if "block_id" not in row or not row["block_id"]:
-                print(COLOR_RED + "Missing block_id values. The operation cannot be performed." + COLOR_RESET)
+            if not row["block_id"]:
+                print(COLOR_RED + "Missing block_id value(s). The operation cannot be performed." + COLOR_RESET)
                 return
         file_name = "runcut_syncro.txt"
         if os.path.exists(file_name):
